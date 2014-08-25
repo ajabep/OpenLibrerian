@@ -1,0 +1,26 @@
+@import "style";
+
+
+.tagList,
+.description {
+	@include text-overflow( ellipsis );
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.main {
+	padding-bottom: $paddingBottomBody;
+}
+
+.object {
+	@extend %objectElement;
+}
+
+.tagIcon {
+	@extend %tagIcon;
+}
+
+.deleteLink .btn-link {
+	padding: 0;
+	border: 0;
+}

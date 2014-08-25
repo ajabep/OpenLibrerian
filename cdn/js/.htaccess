@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+	# To avoid to have a listing of the files in a path without index.*
+	Options -Indexes
+	
+	RewriteEngine On
+</IfModule>
+
+ContentDigest on
+
+<IfModule mod_rewrite.c>
+	RewriteRule ([^/]+)\.[0-9]+\.min\.js$                                   $1.min.js [L,QSA]
+	RewriteRule (object|tag)(\.min)?\.js$                                            $1$2.php [L,QSA]
+</IfModule>
+
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+  # JavaScript
+    ExpiresByType application/javascript                "access plus 1 year"
+    ExpiresByType application/json                      "access plus 0 year"
+</IfModule>

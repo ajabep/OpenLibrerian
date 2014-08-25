@@ -1,0 +1,17 @@
+This site is proudly powered by OpenLibrerian
+
+# OpenLibrerian
+
+
+
+/* TEAM */
+    developper, standard man, SEO, designer : Ajabep
+        Contact: http://ajabep.tk/contact/
+        Location: France
+
+/* SITE */
+    Language: English
+    Standards: HTML5, CSS3, PHP >= 5.3, SQL
+    Components: jQuery, Bootstrap
+    Software: Notepad++, FileZilla, GIMP, Git
+    Github : https://github.com/ajabep/OpenLibrerian/

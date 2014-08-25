@@ -1,0 +1,60 @@
+@import "style";
+
+
+html .table > tbody > tr > td { /* poids des selecteurs */
+	padding: 0;
+}
+
+td a {
+	display: block;
+	padding: 8px;
+	color: #333;
+}
+
+tr:hover a,
+tr:active a {
+	color: #333;
+	text-decoration: underline
+}
+
+td a:focus {
+	color: #333;
+}
+
+.goIcon{
+	@extend %goIcon;
+}
+
+tr td:last-child {
+	width: 2em;
+	
+	a {
+		overflow: hidden;
+		padding: 2px 0px;
+		
+		.goIcon{
+			position: relative;
+			left: 100%;
+			@include transition($transitionFast);
+			margin-right: 3px;
+		}
+	}
+}
+
+tr:hover td:last-child a .goIcon{
+	left: 0;
+}
+
+
+td:nth-child(2) a{
+	@include text-overflow(ellipsis);
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	display: block;
+}
+
+.tagIcon{
+	@extend %tagIcon;
+}
+

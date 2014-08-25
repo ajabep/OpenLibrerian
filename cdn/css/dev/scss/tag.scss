@@ -1,0 +1,39 @@
+@import "style";
+
+
+.tagList,
+.description {
+	@include text-overflow( ellipsis );
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+
+
+.object {
+	@extend %objectElement;
+}
+
+.tagIcon{
+	@extend %tagIcon;
+}
+
+
+.glyphicon.glyphicon-info-sign{
+	color: $brand-primary;
+}
+
+.deleteLink .btn-link {
+	padding: 0;
+	border: 0;
+}
+
+h1 form {
+	display: inline;
+}
+
+.display-inline {
+	display: inline;
+}
+
+

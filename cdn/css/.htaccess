@@ -1,0 +1,24 @@
+<IfModule mod_rewrite.c>
+	# To avoid to have a listing of the files in a path without index.*
+	Options -Indexes
+	
+	RewriteEngine On
+</IfModule>
+
+ContentDigest on
+
+<IfModule mod_rewrite.c>
+	RewriteRule ([^/]+)\.[0-9]+\.min\.css$                               $1.min.css [L,QSA]
+	
+	RewriteCond %{SCRIPT_FILENAME} !\.min\.css$
+	RewriteRule ([^/]+)\.css$                                            dev/index.php?p=$1.scss [L,QSA]
+</IfModule>
+
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+  # CSS
+    ExpiresByType text/css                              "access plus 1 year"
+</IfModule>

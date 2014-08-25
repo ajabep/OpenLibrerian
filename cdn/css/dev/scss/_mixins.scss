@@ -1,0 +1,83 @@
+
+@mixin animation($animation) {
+	-webkit-animation: $animation;
+	   -moz-animation: $animation;
+		 -o-animation: $animation;
+			animation: $animation;
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	   -moz-transition: $transition;
+		 -o-transition: $transition;
+			transition: $transition;
+}
+
+@mixin transform($transform) {
+	-webkit-transform: $transform;
+	   -moz-transform: $transform;
+		-ms-transform: $transform;
+		 -o-transform: $transform;
+			transform: $transform;
+}
+
+@mixin text-overflow($text-overflow) {
+	-o-text-overflow: $text-overflow;
+	   text-overflow: $text-overflow;
+}
+
+@mixin box-shadow($box-shadow) {
+	-webkit-box-shadow: $box-shadow;
+	   -moz-box-shadow: $box-shadow;
+			box-shadow: $box-shadow;
+}
+
+@mixin border-radius($radius) {
+	-webkit-border-radius: $radius;
+	   -moz-border-radius: $radius;
+		-ms-border-radius: $radius;
+			border-radius: $radius;
+}
+
+@mixin user-select($user-select) {
+	-webkit-user-select: $user-select;
+	   -moz-user-select: $user-select;
+		-ms-user-select: $user-select;
+			user-select: $user-select;
+}
+
+@mixin backface-visibility($backface-visibility) {
+	-webkit-backface-visibility: $backface-visibility;
+	   -moz-backface-visibility: $backface-visibility;
+			backface-visibility: $backface-visibility;
+}
+
+@mixin box-sizing($box-sizing) {
+	-webkit-box-sizing: $box-sizing;
+	   -moz-box-sizing: $box-sizing;
+			box-sizing: $box-sizing;
+}
+
+@mixin background-size($background-size) {
+	-webkit-background-size: $background-size;
+	   -moz-background-size: $background-size;
+		 -o-background-size: $background-size;
+			background-size: $background-size;
+}
+
+@mixin hide($soft) {
+	position: absolute;
+	left: -9999px;
+	opcity: 0;
+	@if $soft {
+		display: none;
+	}
+}
+
+@mixin show($soft, $display) {
+	position: static;
+	opcity: 1;
+	@if $soft {
+		display: $display;
+	}
+}

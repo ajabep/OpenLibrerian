@@ -1,0 +1,33 @@
+@import "style";
+@import "keyframes";
+
+
+
+.tagIcon {
+	@extend %tagIcon;
+	
+	 + .glyphicon.glyphicon-remove-sign{
+		cursor: pointer;
+		color: $brand-danger;
+	}
+}
+.glyphicon.glyphicon-info-sign{
+	color: $brand-primary;
+}
+
+h1 form {
+	display: inline;
+}
+
+.tagList {
+	.glyphicon.glyphicon-refresh {
+		cursor: wait;
+		color: $brand-danger;
+		@include border-radius(100%);
+		@include animation(rotate 1s linear infinite);
+	}
+}
+
+.display-inline {
+	display: inline;
+}

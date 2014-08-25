@@ -1,0 +1,34 @@
+$transition : .5s;
+$transitionFast : .2s;
+$backgroundObjects: #fff;
+
+/* tags */
+$heightTagIcon: 15px;
+$paddingTagIcon: 5px;
+
+/* objects */
+$heightObject: 160px;
+$paddingObjectContent: 15px;
+$paddingBottomBody: 15px;
+
+
+
+/* Bootstrap */
+	
+	/* Screen sizes */
+		$screen-xs-max: 767px;
+		
+		$screen-sm-min: 768px;
+		$screen-sm-max: 991px;
+		
+		$screen-md-min: 992px;
+		$screen-md-max: 1199px;
+		
+		$screen-lg-min: 1200;
+	
+	/* Colors */
+		$brand-primary: #428bca;
+		$brand-success: #5cb85c;
+		$brand-info:    #5bc0de;
+		$brand-warning: #f0ad4e;
+		$brand-danger:  #d9534f;

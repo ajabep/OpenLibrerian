@@ -1,0 +1,132 @@
+%heartIcon {
+	@include transform(rotate(-90deg));
+	display: inline-block;
+	@include transition($transition);
+	&:hover {
+		@include transform(rotate(0deg));
+	}
+}
+
+%tagIcon {
+	$heightTotalTagIcon: $heightTagIcon + ( 2 * $paddingTagIcon );
+	
+	padding: $paddingTagIcon;
+	height: $heightTotalTagIcon;
+	line-height: $heightTagIcon;
+	display: inline-block;
+	
+	&::before {
+		content: "\e041";
+		position: relative;
+		top: 1px;
+		display: inline-block;
+		font-family: 'Glyphicons Halflings';
+		font-style: normal;
+		font-weight: normal;
+		line-height: 1;
+
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+}
+
+%objectElement {
+	/*width: 50%;
+	position: relative;*/
+	padding: 0;
+	height: $heightObject;
+	background: $backgroundObjects;
+	@include transition($transition);
+	&:nth-child(odd) {/*
+		float: left;
+		clear: left;*/
+		@media (min-width: $screen-sm-min) {
+			border-right: 1px #333 solid;
+		}
+
+		&:last-child {
+			border-right: 0;
+			width: 100%;
+		}
+	}/*
+	&:nth-child(even) {
+		margin-left: 50%;
+	}*/
+	.objectContent {
+		padding: $paddingObjectContent;
+		overflow: hidden;
+		width: 100%;
+		min-height: $heightObject;
+		height: 100%;
+		@include transition($transition);
+	}
+	.readMore, .editLink {
+		margin-bottom: 0;
+	}
+	h2 {
+		margin-top: 0;
+	}
+	
+	&:hover {
+		.objectContent {
+			@include box-shadow(0 0 15px 10px #777);
+			z-index: 3;
+			position: relative;
+			background: $backgroundObjects;
+			height: auto;
+			@media (min-width: 825px) {
+				@include transform( scale(1.1) );
+			}
+		}
+		.tagList,
+		.description {
+			white-space: normal;
+			overflow:hidden;
+		}
+	}
+}
+
+
+%goIcon{
+	display: block;
+	font-size: .3em;
+	height: 7em;
+	margin: 2%;
+	position: relative;
+	@include transition($transition);
+	width: 7em;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	border: .7em solid black;
+	@include border-radius(100%);
+	
+	@include user-select(none);
+	
+	span{
+		background: #000;
+		@include border-radius(2em);
+		@include backface-visibility(hidden);
+		height: 0.8em;
+		position: absolute;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+		right: 5%;
+		
+		@include user-select(none);
+		
+		&:nth-child(1){
+			top: 1.84em;
+			@include transform(rotate(30deg));
+			width: 50%;
+		}
+		
+		&:nth-child(2){
+			top: 2.5em;
+			width: 90%;
+		}
+		
+		&:nth-child(3){
+			top: 3.17em;
+			@include transform(rotate(-30deg));
+			width: 50%;
+		}
+	}
+}

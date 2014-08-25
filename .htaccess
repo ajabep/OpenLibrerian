@@ -1,0 +1,333 @@
+# To can't overstep the HTTP autentification with Apache 
+<LimitExcept POST GET>
+	Order allow,deny
+	Deny from all
+</LimitExcept>
+
+<IfModule mod_rewrite.c>
+	# To avoid to have a listing of the files in a path without index.*
+	Options -Indexes
+	
+	RewriteEngine On
+	RewriteBase /
+</IfModule>
+
+ContentDigest on
+
+<IfModule mod_headers.c>
+	Header append Cache-Control "public, must-revalidate"
+
+	# Header append Last-Modified "Sat, 14 Sep 2013 17:31:42 GMT"
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Better website experience for IE users
+# ----------------------------------------------------------------------
+# Force the latest IE version, in various cases when it may fall back to IE7 mode
+# github.com/rails/rails/commit/123eb25#commitcomment-118920
+# Use ChromeFrame if it's installed for a better experience for the poor IE folk
+
+<IfModule mod_headers.c>
+	Header set X-UA-Compatible "IE=Edge,chrome=1"
+	# mod_headers can't match by content-type, but we don't want to send this header on *everything*...
+	<FilesMatch "\.(js|css|gif|png|jpe?g|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
+		Header unset X-UA-Compatible
+	</FilesMatch>
+</IfModule>
+
+
+# ----------------------------------------------------------------------
+# Proper MIME type for all files
+# ----------------------------------------------------------------------
+# JavaScript
+# Normalize to standard type (it's sniffed in IE anyways)
+# tools.ietf.org/html/rfc4329#section-7.2
+AddType application/javascript                  js jsonp
+AddType application/json                        json
+
+# Audio
+AddType audio/ogg                               oga ogg
+AddType audio/mp4                               m4a f4a f4b
+AddType audio/mpeg                              mp3
+AddType audio/x-wav                             wav
+
+# Video
+AddType video/ogg                               ogv
+AddType video/mp4                               mp4 m4v f4v f4p
+AddType video/webm                              webm
+AddType video/x-flv                             flv
+AddType video/mpeg                              mpeg mpg mpe
+AddType video/quicktime                         mov
+AddType video/x-msvideo                         avi
+AddType video/3gpp                              3gp
+AddType video/3g2                               3g2
+AddType video/asf                               asf
+
+# SVG
+# Required for svg webfonts on iPad
+# twitter.com/FontSquirrel/status/14855840545
+AddType image/svg+xml                           svg svgz
+AddEncoding gzip                                svgz
+
+# Webfonts
+AddType application/vnd.ms-fontobject           eot
+AddType application/x-font-ttf                  ttf ttc
+AddType font/opentype                           otf
+AddType application/x-font-woff                 woff
+
+# Images
+AddType image/x-icon                            ico
+AddType image/webp                              webp
+AddType image/gif                               gif
+AddType image/png                               png
+AddType image/jpeg                              jpeg jpg jpe jfif
+AddType image/bmp                               bmp
+AddType image/tiff                              tif
+
+# Assorted types
+AddType text/cache-manifest                     appcache manifest
+AddType text/x-component                        htc
+AddType text/x-vcard                            vcf
+AddType text/vtt                                vtt 
+AddType text/plain                              txt
+AddType text/html                               html htm
+AddType text/css                                css
+AddType application/xml                         rss atom xml rdf
+AddType application/x-chrome-extension          crx
+AddType application/x-opera-extension           oex
+AddType application/x-xpinstall                 xpi
+AddType application/octet-stream                safariextz
+AddType application/x-web-app-manifest+json     webapp
+AddType application/x-shockwave-flash           swf
+AddType application/pdf                         pdf
+AddType application/zip                         zip
+AddType application/x-compressed-tar            gz
+AddType application/msword                      doc docx
+AddType application/vnd.ms-excel                xls xlsx
+AddType application/vnd.ms-powerpoint           ppt pptx
+
+
+
+
+<IfModule mod_rewrite.c>
+	RewriteCond %{HTTPS} !=on
+	RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+	RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+
+<IfModule mod_rewrite.c>
+
+	RewriteRule ^(([a-z]+)/)?tags/(([0-9]+)/)?$                            /index.php?lang=$2&action=tags&page=$4 [L,QSA]
+
+	RewriteRule ^(([a-z]+)/)?object/([0-9]+)/[^/]+/((delete)/)?$                            /index.php?lang=$2&action=object&id=$3&edit=$5 [L,QSA]
+
+	RewriteRule ^(([a-z]+)/)?tag/([0-9]+)/[^/]+/((delete)/)?$                            /index.php?lang=$2&action=tag&id=$3&edit=$5 [L,QSA]
+
+	RewriteRule ^(([a-z]+)/)?about/$                                                      /index.php?lang=$2&action=about [L,QSA]
+
+	RewriteRule ^(([a-z]+)/)?admin/((update)/)?$                                                      /index.php?lang=$2&action=admin&part=$4 [L,QSA]
+
+	RewriteRule ^(([a-z]+)/)?download/([0-9]+)/[^/]+$                          /index.php?lang=$2&action=download&id=$3 [L,QSA]
+
+	RewriteRule ^lang/([a-z]+)/$                                                         /index.php?action=changeLang&lang=$1 [L,QSA]
+
+	RewriteRule ^(([a-z]+)/)?ajax/(tagList|editObject|editTag)/$                            /index.php?lang=$2&action=ajax&page=$3 [L,QSA]
+
+	#RewriteRule ^sitemap.xml$                                                         /index.php?action=sitemap [L,QSA]
+	#RewriteRule ^sitemap.xml.gz$                                                         /index.php?action=sitemap&gz=1 [L,QSA]
+
+	RewriteRule ^(([a-z]+)/)?(([0-9]+)/)?$                                                   /index.php?lang=$2&page=$4 [L,QSA]
+</IfModule>
+
+ServerSignature Off
+
+DirectoryIndex index.php index.html index.htm /index.php?action=404 /index.php?action=403 /index.php?action=maintenance
+
+ErrorDocument 400 /index.php?action=400
+ErrorDocument 401 /401.html
+ErrorDocument 402 /402.html
+ErrorDocument 403 /index.php?action=403
+ErrorDocument 404 /index.php?action=404
+ErrorDocument 405 /405.html
+ErrorDocument 406 /406.html
+ErrorDocument 407 /407.html
+ErrorDocument 408 /408.html
+ErrorDocument 409 /409.html
+ErrorDocument 410 /410.html
+ErrorDocument 411 /411.html
+ErrorDocument 412 /412.html
+ErrorDocument 413 /413.html
+ErrorDocument 414 /414.html
+ErrorDocument 415 /415.html
+ErrorDocument 416 /416.html
+ErrorDocument 417 /417.html
+
+ErrorDocument 500 /500.html
+ErrorDocument 501 /501.html
+ErrorDocument 502 /502.html
+ErrorDocument 503 /503.html
+ErrorDocument 504 /504.html
+ErrorDocument 505 /505.html
+
+<FilesMatch "(\.(log|bak|config|sql|sqlite|fla|psd|ini|log|sh|inc|swp|dist)|~)$">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+<Files Thumbs.db>
+	Order allow,deny
+	Deny from all
+</Files>
+
+<IfModule php5_module>
+	php_value session.cookie_httponly true
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# | ETag removal |
+# ------------------------------------------------------------------------------
+# Since we're sending far-future expires headers (see below), ETags can
+# be removed: http://developer.yahoo.com/performance/rules.html#etags.
+# `FileETag None` is not enough for every server.
+<IfModule mod_headers.c>
+	Header unset ETag
+</IfModule>
+FileETag None
+
+# ------------------------------------------------------------------------------
+# | Expires headers (for better cache control)                                 |
+# ------------------------------------------------------------------------------
+
+# The following expires headers are set pretty far in the future. If you don't
+# control versioning with filename-based cache busting, consider lowering the
+# cache time for resources like CSS and JS to something like 1 week.
+
+<IfModule mod_expires.c>
+
+    ExpiresActive on
+    ExpiresDefault                                      "access plus 1 month"
+
+  # CSS
+    ExpiresByType text/css                              "access plus 1 year"
+
+  # Data interchange
+    ExpiresByType application/json                      "access plus 0 seconds"
+    ExpiresByType application/xml                       "access plus 0 seconds"
+    ExpiresByType text/xml                              "access plus 0 seconds"
+
+  # Favicon (cannot be renamed!)
+    ExpiresByType image/x-icon                          "access plus 1 week"
+
+  # HTML components (HTCs)
+    ExpiresByType text/x-component                      "access plus 1 month"
+
+  # HTML
+    ExpiresByType text/html                             "access plus 0 seconds"
+
+  # JavaScript
+    ExpiresByType application/javascript                "access plus 1 year"
+
+  # Manifest files
+    ExpiresByType application/x-web-app-manifest+json   "access plus 0 seconds"
+    ExpiresByType text/cache-manifest                   "access plus 0 seconds"
+
+  # Media
+    ExpiresByType audio/ogg                             "access plus 1 month"
+    ExpiresByType image/gif                             "access plus 1 month"
+    ExpiresByType image/jpeg                            "access plus 1 month"
+    ExpiresByType image/png                             "access plus 1 month"
+    ExpiresByType video/mp4                             "access plus 1 month"
+    ExpiresByType video/ogg                             "access plus 1 month"
+    ExpiresByType video/webm                            "access plus 1 month"
+
+  # Web feeds
+    ExpiresByType application/atom+xml                  "access plus 1 hour"
+    ExpiresByType application/rss+xml                   "access plus 1 hour"
+
+  # Web fonts
+    ExpiresByType application/font-woff                 "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject         "access plus 1 month"
+    ExpiresByType application/x-font-ttf                "access plus 1 month"
+    ExpiresByType font/opentype                         "access plus 1 month"
+    ExpiresByType image/svg+xml                         "access plus 1 month"
+
+</IfModule>
+
+
+# Block access to hidden files and directories.
+# This includes directories used by version control systems such as Git and SVN.
+
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
+</IfModule>
+
+<IfModule mod_headers.c>
+	Header unset Server
+	Header unset X-Powered-By
+</IfModule>
+
+
+# MOD_GZIP COMPRESSION
+<IfModule mod_gzip.c>
+	mod_gzip_on Yes
+	mod_gzip_can_negotiate Yes
+	mod_gzip_static_suffix .gz
+	AddEncoding gzip .gz
+	mod_gzip_update_static No
+	mod_gzip_command_version '/mod_gzip_status'
+	mod_gzip_temp_dir /tmp
+	mod_gzip_keep_workfiles No
+	mod_gzip_minimum_file_size 500
+	mod_gzip_maximum_file_size 500000
+	mod_gzip_maximum_inmem_size 60000
+	mod_gzip_min_http 1000
+	mod_gzip_handle_methods GET POST
+	mod_gzip_item_exclude reqheader "User-agent: Mozilla/4.0[678]"
+	mod_gzip_item_include file \.html$
+	mod_gzip_item_include file \.htm$
+	mod_gzip_item_include file \.php3$
+	mod_gzip_item_include file \.php$
+	mod_gzip_item_include file \.js$
+	mod_gzip_item_include file \.css$
+	mod_gzip_item_include mime ^text/
+	mod_gzip_item_exclude mime ^httpd/unix-directory
+	mod_gzip_item_exclude mime ^image/
+	mod_gzip_dechunk Yes
+	mod_gzip_add_header_count Yes
+	mod_gzip_send_vary Yes
+</IfModule>
+
+# MOD_DEFLATE COMPRESSION
+<IfModule !mod_gzip.c>
+	<IfModule mod_deflate.c>
+		# Insert filter
+		SetOutputFilter DEFLATE
+
+		# Bug with Apache 2.4.9 on WAMP 2.5 with Windows 8.1 . Why ?
+		# # AddOutputFilterByType DEFLATE text/plain
+		# # AddOutputFilterByType DEFLATE text/xml
+		# # AddOutputFilterByType DEFLATE text/html
+		# # AddOutputFilterByType DEFLATE text/css
+		# # AddOutputFilterByType DEFLATE image/svg+xml
+		# # AddOutputFilterByType DEFLATE application/xhtml+xml
+		# # AddOutputFilterByType DEFLATE application/xml
+		# # AddOutputFilterByType DEFLATE application/rss+xml
+		# # AddOutputFilterByType DEFLATE application/atom_xml
+		# # AddOutputFilterByType DEFLATE application/x-javascript
+		# # AddOutputFilterByType DEFLATE application/x-httpd-php
+
+		# Pour les navigateurs incompatibles
+		BrowserMatch ^Mozilla/4 gzip-only-text/html
+		BrowserMatch ^Mozilla/4\.0[678] no-gzip
+		BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+		BrowserMatch \bMSI[E] !no-gzip !gzip-only-text/html
+
+		# les proxies doivent donner le bon contenu
+		<IfModule mod_headers.c>
+			Header append Vary User-Agent env=!dont-vary
+		</IfModule>
+	</IfModule>
+</IfModule>
