@@ -43,7 +43,9 @@ To install if you must :
   4. Configure the /offline/db.inc.php file
   5. Configure the /cdn/offline/config.inc.php file
   6. (Optional, but very recommended) setup the "cdn" subdomain (files in the /cdn folder)
-  7. You have finish ! Enjoy :grinning: !
+  7. Change the file "/offline/login.admin.conf" : it's the admin login. (Default : "admin")
+  8. Change the file "/offline/password.admin.conf" : it's the sha512 hash of the admin password. (Default : "password")
+  9. You have finish ! Enjoy :grinning: !
 
 
 
