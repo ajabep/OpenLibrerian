@@ -108,7 +108,7 @@
 
 	<!-- Apple Apps -->
 		<meta name="apple-mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="apple-mobile-web-app-status-bar-style" content="white-translucent">
 		<meta name="format-detection" content="telephone=no">
 		<meta name="apple-mobile-web-app-title" content="<?php echo NAME_OF_THE_SYSTEM; ?>">
 		<meta name="apple-touch-fullscreen" content="yes">
@@ -130,8 +130,6 @@
 	<link rel="icon" type="image/png" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/favicon-196x196.1.png" sizes="196x196">
 
 	<link rel="author" type="text/plain" href="<?php echo PREFIX_ABSOLUTE_LINK; ?>humans.txt">
-	<link rel="index" title="The Ajabep's site" href="/">
-	<link rel="start" title="The Ajabep's site" href="/">
 
 	<!-- Apple Apps -->
 		<link rel="apple-touch-icon" sizes="57x57" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-57x57.1.png">
