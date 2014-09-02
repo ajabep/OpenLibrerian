@@ -12,7 +12,7 @@
 				<div class="container">
 					<div class="carousel-caption">
 						<h1>OpenLibrerian</h1>
-						<p>is a librerian open-source to manage and share some files like pictures, documents, musics, and more...</p>
+						<p>is an open-source librerian to manage and share some files like pictures, documents, musics, and more...</p>
 						<p><a class="btn btn-lg btn-primary" href="https://github.com/ajabep/OpenLibrerian/" role="button">Download now !</a></p>
 					</div>
 				</div>
