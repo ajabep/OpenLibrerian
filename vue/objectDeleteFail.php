@@ -32,7 +32,7 @@
 			</details>
 			
 			<div class="text-right">
-				<a href="<?php echo PREFIX_LINK_LANG; ?>object/<?php echo $object->ID(); ?>/<?php echo stringToUrl($object->name()); ?>/" class="btn btn-default" data-dismiss="modal">Cancel</a>
+				<a href="<?php echo PREFIX_LINK_LANG; ?>object/<?php echo $object->ID(); ?>/<?php echo stringToUrl($object->name()); ?>/" class="btn btn-default">Cancel</a>
 				<form role="form" method="post" action="<?php echo PREFIX_LINK_LANG; ?>object/<?php echo $object->ID(); ?>/<?php echo stringToUrl($object->name()); ?>/delete/" class="display-inline">
 					<input type="hidden" aria-hidden="true" name="token" value="{{token}}">
 					<button type="submit" role="button" class="btn btn-danger">Try again to delete <span class="glyphicon glyphicon-remove"></span></button>

@@ -36,13 +36,13 @@
 										<?php
 											if( $isAdmin ) {
 												echo '<p class="editLink pull-left"><a href="' . PREFIX_LINK_LANG . 'object/' . $object->ID() . '/' . stringToUrl( $object->name() ) . '/">Edit &rarr;</a></p>
-													  <!--p class="deleteLink text-center"><a href="' . PREFIX_LINK_LANG . 'object/' . $object->ID() . '/' . stringToUrl( $object->name() ) . '/delete/">Delete &rarr;</a></p-->
-													  
-													  
-													  <form role="form" method="post" action="' . PREFIX_LINK_LANG . 'object/' . $object->ID() . '/' . stringToUrl($object->name()) . '/delete/" class="deleteLink text-center">
+													<!--p class="deleteLink text-center"><a href="' . PREFIX_LINK_LANG . 'object/' . $object->ID() . '/' . stringToUrl( $object->name() ) . '/delete/">Delete &rarr;</a></p-->
+													
+													
+													<form role="form" method="post" action="' . PREFIX_LINK_LANG . 'object/' . $object->ID() . '/' . stringToUrl($object->name()) . '/delete/" class="deleteLink text-center">
 														<input type="hidden" aria-hidden="true" name="token" value="{{tokenDeleteObject}}">
 														<button type="submit" role="button" class="btn btn-link">Delete &rarr;</button>
-													  </form>';
+													</form>';
 											}
 										?>
 									</div>

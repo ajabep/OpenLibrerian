@@ -52,24 +52,24 @@
 	}
 ?><meta name="msapplication-task" content="name=About; action-uri=<?php echo PREFIX_ABSOLUTE_LINK; ?>about/; icon-uri=<?php echo PREFIX_ABSOLUTE_LINK; ?>favicon.ico"><meta name="msapplication-task" content="name=Admin space; action-uri=<?php echo PREFIX_ABSOLUTE_LINK; ?>admin/; icon-uri=<?php echo PREFIX_ABSOLUTE_LINK; ?>favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="white-translucent"><meta name="format-detection" content="telephone=no"><meta name="apple-mobile-web-app-title" content="<?php echo NAME_OF_THE_SYSTEM; ?>"><meta name="apple-touch-fullscreen" content="yes"><link rel="dns-prefetch" href="http//code.jquery.com"><link rel="dns-prefetch" href="http//maxcdn.bootstrapcdn.com"><link rel="dns-prefetch" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>"><!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="<?php echo PREFIX_LINK; ?>favicon.ico" /><![endif]--><link rel="icon" type="image/x-icon" href="<?php echo PREFIX_LINK; ?>favicon.ico"><link rel="icon" type="image/png" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/favicon-16x16.1.png" sizes="16x16"><link rel="icon" type="image/png" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/favicon-32x32.1.png" sizes="32x32"><link rel="icon" type="image/png" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/favicon-96x96.1.png" sizes="96x96"><link rel="icon" type="image/png" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/favicon-160x160.1.png" sizes="160x160"><link rel="icon" type="image/png" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/favicon-196x196.1.png" sizes="196x196"><link rel="author" type="text/plain" href="<?php echo PREFIX_ABSOLUTE_LINK; ?>humans.txt"><link rel="apple-touch-icon" sizes="57x57" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-57x57.1.png"><link rel="apple-touch-icon" sizes="114x114" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-114x114.1.png"><link rel="apple-touch-icon" sizes="72x72" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-72x72.1.png"><link rel="apple-touch-icon" sizes="144x144" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-144x144.1.png"><link rel="apple-touch-icon" sizes="60x60" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-60x60.1.png"><link rel="apple-touch-icon" sizes="120x120" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-120x120.1.png"><link rel="apple-touch-icon" sizes="76x76" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-76x76.1.png"><link rel="apple-touch-icon" sizes="152x152" href="<?php echo PREFIX_ABSOLUTE_CDN; ?>img/apple-touch-icon-152x152.1.png"><?php 
 	if( $this->name == 'index' ) {
-		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/index.1.min.css">';
+		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/index.2.min.css">';
 	}
 	elseif( $this->name == 'tags' ) {
-		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tags.1.min.css">';
+		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tags.2.min.css">';
 	}
 	elseif( $this->name == 'object' ) {
-		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/object.1.min.css">';
+		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/object.2.min.css">';
 	}
 	elseif( $this->name == 'tag' ) {
-		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tag.1.min.css">';
+		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tag.2.min.css">';
 	}
 	elseif( $this->name == 'about' ) {
-		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/about.1.min.css">';
+		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/about.2.min.css">';
 	}
 	elseif( $this->name == 'admin' && !$isAdmin && !empty($_GET['resetPassword']) ) {
-		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/admin.1.min.css">';
+		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/admin.2.min.css">';
 	}
 	else {
-		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/style.1.min.css">';
+		echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/style.2.min.css">';
 	}
 ?></head><body role="document" itemscope="itemscope" itemtype="http://schema.org/WebPage">

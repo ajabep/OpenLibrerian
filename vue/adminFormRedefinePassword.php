@@ -6,7 +6,7 @@
 			<input type="password" autofocus required placeholder="Your new password" title="Your new password" class="form-control" name="password">
 			<input type="password" required placeholder="Confirmation of your new password" title="Confirmation of your new password" class="form-control" name="confirmation">
 			<input type="hidden" aria-hidden="true" name="token" value="{{token}}">
-			<button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
+			<button type="submit" class="btn btn-lg btn-primary btn-block">Reset password</button>
 		</form>
 		
 		<ul class="list-group">

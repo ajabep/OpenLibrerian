@@ -1,6 +1,6 @@
 <?php
 class html {
-	protected $supportedLang = array('en'); // in lower case // add it in the .htaccess to
+	protected $supportedLang = array('en', 'fr'); // in lower case // add it in the .htaccess to
 	protected $defaultLanguage = DEFAULT_LANGUAGE; // in lowercase
 	protected $lang = '';
 	protected $option;
@@ -11,6 +11,7 @@ class html {
 			const NO_FORCE_LANG = 0x1;
 			const NO_DEFINE_LANG = 0x2;
 			const FORCE_LANG_EN = 0x4;
+			const FORCE_LANG_FR = 0x8;
 		
 		// COOKIES
 			const NO_DEFINE_COOKIES = 0x10;
@@ -35,6 +36,9 @@ class html {
 		
 		if( $this->option & self::FORCE_LANG_EN ) {
 			$return = $this->lang('en');
+		}
+		if( $this->option & self::FORCE_LANG_FR ) {
+			$return = $this->lang('fr');
 		}
 		if( isset($_COOKIE['htmlLang']) && in_array($_COOKIE['htmlLang'], $this->supportedLang) ) {
 			$this->lang = mb_strtolower($_COOKIE['htmlLang']);
@@ -80,6 +84,8 @@ class html {
 
 	public function lang( $lang = null ) {
 		
+		
+		
 		if( $lang === null ) {
 			return $this->lang;
 		}
@@ -91,6 +97,7 @@ class html {
 			}
 			return true;
 		}
+		
 		return false;
 		
 	}

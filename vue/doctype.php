@@ -144,25 +144,25 @@
 
 	<?php 
 		if( $this->name == 'index' ) {
-			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/index.1.min.css">';
+			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/index.2.min.css">';
 		}
 		elseif( $this->name == 'tags' ) {
-			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tags.1.min.css">';
+			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tags.2.min.css">';
 		}
 		elseif( $this->name == 'object' ) {
-			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/object.1.min.css">';
+			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/object.2.min.css">';
 		}
 		elseif( $this->name == 'tag' ) {
-			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tag.1.min.css">';
+			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/tag.2.min.css">';
 		}
 		elseif( $this->name == 'about' ) {
-			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/about.1.min.css">';
+			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/about.2.min.css">';
 		}
 		elseif( $this->name == 'admin' && !$isAdmin && !empty($_GET['resetPassword']) ) {
-			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/admin.1.min.css">';
+			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/admin.2.min.css">';
 		}
 		else {
-			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/style.1.min.css">';
+			echo '<link rel="stylesheet" type="text/css" href="' . PREFIX_ABSOLUTE_CDN . 'css/style.2.min.css">';
 		}
 		
 	?>

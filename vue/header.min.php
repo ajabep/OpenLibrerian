@@ -7,7 +7,7 @@
 					continue;
 				}
 				
-				echo '<li><a href="' . PREFIX_LINK . 'changeLang/' . $lang . '/">';
+				echo '<li><a href="' . PREFIX_LINK . 'lang/' . $lang . '/">';
 				
 				if( !empty($langNames[$lang] ) ) {
 					echo $langNames[$lang];

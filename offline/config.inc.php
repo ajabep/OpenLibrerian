@@ -14,7 +14,7 @@
 //DNS const
 	define('PREFIX_LINK', '/'); // path in URI to access to the system
 	define('PREFIX_ABSOLUTE_LINK', 'http://exemple.com/'); // Absolute URI to access to the system
-	define('PREFIX_ABSOLUTE_CDN', 'http://cdn.exemple.com/'); // Absolute URI to access to the CDN folder (it can be a subdomain)
+	define('PREFIX_ABSOLUTE_CDN', 'http://exemple.com/cdn/'); // Absolute URI to access to the CDN folder (it can be a subdomain)
 	define('PREFIX_ABSOLUTE_TINY_LINK', 'http://exemple.com/'); // Absolute tiny URI to access to the system if you have it (if you haven't it, fill it like PREFIX_ABSOLUTE_LINK)
 
 // Mail const (via SMTP)

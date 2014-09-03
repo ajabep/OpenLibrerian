@@ -69,8 +69,7 @@ class controler {
 	}
 
 
-	public function exec( $get = array() ) {
-		$this->get = $get;
+	public function exec() {
 		$this->{ $this->name }();
 	}
 
@@ -83,11 +82,11 @@ class controler {
 		
 		$othersLangAvailables = count($supportedLang) - 1;
 		
-		if( empty($this->get['page']) ) {
+		if( empty($_GET['page']) ) {
 			$page = 1;
 		}
 		else{
-			$page = max( (int) $this->get['page'], 1 );
+			$page = max( (int) $_GET['page'], 1 );
 		}
 		
 		$limitStart = NUMBER_OF_OBJECT_BY_PAGES * ( $page - 1 );
@@ -167,11 +166,11 @@ class controler {
 		
 		$othersLangAvailables = count($supportedLang) - 1;
 		
-		if( empty($this->get['page']) ) {
+		if( empty($_GET['page']) ) {
 			$page = 1;
 		}
 		else {
-			$page = max( (int) $this->get['page'], 1 );
+			$page = max( (int) $_GET['page'], 1 );
 		}
 		
 		$limitStart = NUMBER_OF_OBJECT_BY_PAGES * ( $page - 1 );
@@ -235,12 +234,12 @@ class controler {
 		
 		$othersLangAvailables = count($supportedLang) - 1;
 		
-		if( empty($this->get['id']) ) {
+		if( empty($_GET['id']) ) {
 			notFound();
 			return;
 		}
 		else {
-			$id = (int) $this->get['id'];
+			$id = (int) $_GET['id'];
 		}
 		
 		
@@ -262,7 +261,7 @@ class controler {
 			return;
 		}
 		
-		switch($this->get['edit']){
+		switch($_GET['edit']){
 			default :
 				close_db();
 				notFound();
@@ -302,7 +301,7 @@ class controler {
 		
 		close_db();
 		
-		switch($this->get['edit']){
+		switch($_GET['edit']){
 			case '':
 				$namePage = $this->name;
 				break;
@@ -341,7 +340,7 @@ class controler {
 		header('X-Robots-Tag: ' . $robotsInstruction, true);
 		header('Content-language: ' . USER_LANGUAGE);
 		
-		$arrayHtmlCache = array(DEVELOPPEMENT, PREFIX_ABSOLUTE_LINK, $this->get['edit'], serialize($object), PREFIX_ABSOLUTE_CDN, PREFIX_LINK, PREFIX_LINK_LANG, NAME_OF_THE_SYSTEM, $supportedLang, $isAdmin);
+		$arrayHtmlCache = array(DEVELOPPEMENT, PREFIX_ABSOLUTE_LINK, $_GET['edit'], serialize($object), PREFIX_ABSOLUTE_CDN, PREFIX_LINK, PREFIX_LINK_LANG, NAME_OF_THE_SYSTEM, $supportedLang, $isAdmin);
 		
 		if( $namePage == $this->name ) {
 			$arrayHtmlCache[] = $isAdmin;
@@ -379,7 +378,7 @@ class controler {
 		
 		$othersLangAvailables = count($supportedLang) - 1;
 		
-		$id = (int) $this->get['id'];
+		$id = (int) $_GET['id'];
 		
 		
 		if( isset($_SESSION['isAdmin']) ) {
@@ -401,7 +400,7 @@ class controler {
 			return;
 		}
 		
-		switch($this->get['edit']){
+		switch($_GET['edit']){
 			default :
 				close_db();
 				notFound();
@@ -445,7 +444,7 @@ class controler {
 		
 		close_db();
 		
-		switch($this->get['edit']){
+		switch($_GET['edit']){
 			case '':
 				$namePage = $this->name;
 				break;
@@ -489,7 +488,7 @@ class controler {
 			$isAdmin = false;
 		}
 		
-		$arrayHtmlCache = array(DEVELOPPEMENT, PREFIX_ABSOLUTE_LINK, $this->get['edit'], serialize($tag), PREFIX_ABSOLUTE_CDN, PREFIX_LINK, PREFIX_LINK_LANG, NAME_OF_THE_SYSTEM, $supportedLang, $isAdmin);
+		$arrayHtmlCache = array(DEVELOPPEMENT, PREFIX_ABSOLUTE_LINK, $_GET['edit'], serialize($tag), PREFIX_ABSOLUTE_CDN, PREFIX_LINK, PREFIX_LINK_LANG, NAME_OF_THE_SYSTEM, $supportedLang, $isAdmin);
 		
 		if( $namePage == $this->name ) {
 			$arrayHtmlCache[] = $isAdmin;
@@ -961,12 +960,12 @@ class controler {
 		
 		$othersLangAvailables = count($supportedLang) - 1;
 		
-		if( empty($this->get['id']) ) {
+		if( empty($_GET['id']) ) {
 			notFound();
 			return;
 		}
 		else {
-			$id = (int) $this->get['id'];
+			$id = (int) $_GET['id'];
 		}
 		
 		
@@ -1253,9 +1252,8 @@ class controler {
 
 	public function changeLang() {
 		global $html;
-		
 
-		$resultChang = $html->lang($this->get['lang']);
+		$resultChang = $html->lang($_GET['to']);
 		
 		
 		if(isset($_SERVER['HTTP_REFERER'])){
@@ -1280,10 +1278,10 @@ class controler {
 		
 		$lang = '';
 		
-		if($resultChang && $this->get['lang']!=DEFAULT_LANGUAGE){
-			$lang = $this->get['lang'].'/';
+		if($resultChang && $_GET['to'] != DEFAULT_LANGUAGE){
+			$lang = $_GET['to'].'/';
 		}
-		elseif( !$resultChang && USER_LANGUAGE!=DEFAULT_LANGUAGE){
+		elseif( !$resultChang && USER_LANGUAGE != DEFAULT_LANGUAGE){
 			$lang = USER_LANGUAGE.'/';
 		}
 		
@@ -1291,7 +1289,7 @@ class controler {
 		$newUrl = PREFIX_ABSOLUTE_LINK . $lang . $page;
 		
 		
-		http_redirect($page, array(), false, HTTP_REDIRECT_TEMP);
+		http_redirect($newUrl, array(), false, HTTP_REDIRECT_TEMP);
 		return;
 	}
 

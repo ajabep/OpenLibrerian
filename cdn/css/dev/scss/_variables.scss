@@ -15,16 +15,9 @@ $paddingBottomBody: 15px;
 
 /* Bootstrap */
 	
-	/* Screen sizes */
-		$screen-xs-max: 767px;
-		
-		$screen-sm-min: 768px;
-		$screen-sm-max: 991px;
-		
-		$screen-md-min: 992px;
-		$screen-md-max: 1199px;
-		
-		$screen-lg-min: 1200;
+	/* Glyphicons */
+		$icon-font-path: 'https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/fonts/';
+		$bootstrap-sass-asset-helper: false;
 	
 	/* Colors */
 		$brand-primary: #428bca;

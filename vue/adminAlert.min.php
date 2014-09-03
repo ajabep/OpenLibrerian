@@ -93,41 +93,6 @@
 				error_log('Unknown error : ' . var_export($_SESSION['errAdmin'], true) . ' in '. __FILE__ .':' . __LINE__);
 		}
 	}
-	elseif( $_SESSION['part'] == 'update' ) {
-		switch( $_SESSION['errAdmin'] ) {
-			case 1:
-				echo 'danger">You can\'t update your system.';
-				break;
-			
-			case 2:
-				echo 'danger">The uploaded file is corrupt.';
-				break;
-			
-			case 3:
-				echo 'danger">Th file is invalid can\'t be open like a zip archive.';
-				break;
-			
-			case 4:
-				echo 'danger">The archive can\'t be extract.';
-				break;
-			
-			case 5:
-				echo 'danger">An error occur when deleting the old files.';
-				break;
-			
-			case 4:
-				echo 'danger">We can\'t record the settings. Retry later.';
-				break;
-			
-			case 4:
-				echo 'success">Your system is up to date now !';
-				break;
-			
-			default:
-				echo 'danger">Unknown error. Retry later please.';
-				error_log('Unknown error : ' . var_export($_SESSION['errAdmin'], true) . ' in '. __FILE__ .':' . __LINE__);
-		}
-	}
 	else {
 		echo 'danger">Unknown error. Retry later please.';
 		error_log('Unknown error : ' . var_export($_SESSION['errAdmin'], true) . ' with' . var_export($_SESSION['part'], true) . ' in '. __FILE__ .':' . __LINE__);

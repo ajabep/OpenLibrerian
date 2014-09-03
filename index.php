@@ -86,4 +86,4 @@ $langNames = array(
 				);
 
 
-$controlerObj->exec($_GET);
+$controlerObj->exec();

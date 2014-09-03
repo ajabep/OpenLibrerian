@@ -131,7 +131,7 @@ AddType application/vnd.ms-powerpoint           ppt pptx
 
 	RewriteRule ^(([a-z]+)/)?download/([0-9]+)/[^/]+$                          /index.php?lang=$2&action=download&id=$3 [L,QSA]
 
-	RewriteRule ^lang/([a-z]+)/$                                                         /index.php?action=changeLang&lang=$1 [L,QSA]
+	RewriteRule ^lang/([a-z]+)/$                                                         /index.php?action=changeLang&to=$1 [L,QSA]
 
 	RewriteRule ^(([a-z]+)/)?ajax/(tagList|editObject|editTag)/$                            /index.php?lang=$2&action=ajax&page=$3 [L,QSA]
 

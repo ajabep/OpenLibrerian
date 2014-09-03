@@ -1,6 +1,6 @@
 <?php
 
-$configFile = '../offline/config.inc.php'
+$configFile = '../offline/config.inc.php';
 
 require $configFile;
 
